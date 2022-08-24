@@ -1,0 +1,11 @@
+# STM32F4DISCOVERY board configuration
+
+# Copyright (c) 2016 Linaro Limited.
+# SPDX-License-Identifier: Apache-2.0
+
+if BOARD_BITCRAZE_CRAZYFLIE
+
+config BOARD
+	default "bitcraze_crazyflie"
+
+endif 
