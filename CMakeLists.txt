@@ -1,6 +1,12 @@
 # SPDX-License-Identifier: Apache-2.0
 
 cmake_minimum_required(VERSION 3.20.0)
+project(kconfig_cmake
+    VERSION     1.0
+    DESCRIPTION "Crazyflie 2.1 firware using Zephyr RTOS"
+    LANGUAGES   CXX
+)
+
 set(BOARD_ROOT ${CMAKE_SOURCE_DIR})
 set(BOARD bitcraze_crazyflie)
 set(ENV{PRJ_SRC} "${CMAKE_SOURCE_DIR}")
