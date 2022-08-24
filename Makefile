@@ -29,29 +29,5 @@ erase:
 	$(OPENOCD) -d2 -f $(OPENOCD_INTERFACE) -f $(OPENOCD_TARGET) -c init -c targets -c "halt" -c "stm32f4x mass_erase 0" -c shutdown
 
 
-# name of the Kconfig file
-KCONFIG_FILE = configs/Kconfig
-
-# path to save and load the config file (do not change the name KCONFIG_CONFIG ! )
-KCONFIG_CONFIG=configs/.config
-
-# path to save the .h config file
-CONFIG_HEADER_PATH = configs/config.h
-
-KCONFIGLIB_SCRIPTS_PATH = robotics_lib/python_scripts/kconfiglib
-
-
-menuconfig:
-	$(kpython) $(KCONFIGLIB_SCRIPTS_PATH)/menuconfig.py $(KCONFIG_FILE)
-
-guiconfig:
-	$(kpython) $(KCONFIGLIB_SCRIPTS_PATH)/guiconfig.py $(KCONFIG_FILE)
-
-genconfig:
-	$(kpython) $(KCONFIGLIB_SCRIPTS_PATH)/genconfig.py $(KCONFIG_FILE) --header-path $(CONFIG_HEADER_PATH)
-
-
-
-
 
 
