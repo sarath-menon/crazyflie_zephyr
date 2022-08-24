@@ -1,4 +1,8 @@
 # SPDX-License-Identifier: Apache-2.0
+list(APPEND ZEPHYR_EXTRA_MODULES
+  ${CMAKE_CURRENT_SOURCE_DIR}/robotics_lib
+  )
+
 
 cmake_minimum_required(VERSION 3.20.0)
 set(BOARD_ROOT ${CMAKE_SOURCE_DIR})
@@ -24,4 +28,4 @@ if(NOT TESTING_MODE)
 add_subdirectory(app)
 endif()
 
-add_subdirectory(robotics_lib)
+# add_subdirectory(robotics_lib)
