@@ -10,7 +10,7 @@
 
 / {
 	model = "Bitcraze Crazyfly 2.1";
-	compatible = "st,stm32f4discovery";
+	compatible = "bitcraze,bitcrazyCrazyflie";
 
 	chosen {
 		zephyr,console = &cdc_acm_uart0;
