@@ -4,6 +4,7 @@
 #include "led.hpp"
 #include "uart_dma.hpp"
 #include "usb_console.hpp"
+#include <cstdio>
 #include <zephyr/logging/log.h>
 #include <zephyr/zephyr.h>
 
@@ -35,8 +36,8 @@ int main(void) {
   // UartDma uart_dma(uart6);
   // uart_dma.enable_dma_receiving();
 
-  printk("Acc chip id: %d\n", imu.acc.chip_id());
-  printk("Gyro chip id: %d\n", imu.gyro.chip_id());
+  printf("Acc chip id: %d\n", imu.acc.chip_id());
+  printf("Gyro chip id: %d\n", imu.gyro.chip_id());
 
   for (;;) {
 
