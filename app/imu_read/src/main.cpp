@@ -5,6 +5,7 @@
 #include "uart_dma.hpp"
 #include "usb_console.hpp"
 #include <cstdio>
+#include <string>
 #include <zephyr/logging/log.h>
 #include <zephyr/zephyr.h>
 
@@ -16,28 +17,23 @@ BUILD_ASSERT(DT_NODE_HAS_COMPAT(DT_CHOSEN(zephyr_console), zephyr_cdc_acm_uart),
 int main(void) {
   UsbConsole console(devices::console);
 
-  CorelessMotor motor1(devices::motor1);
-  CorelessMotor motor2(devices::motor2);
-  CorelessMotor motor3(devices::motor3);
-  CorelessMotor motor4(devices::motor4);
+  rl::actuators::motors::Coreless motor1(devices::motor1);
+  rl::actuators::motors::Coreless motor2(devices::motor2);
+  rl::actuators::motors::Coreless motor3(devices::motor3);
+  rl::actuators::motors::Coreless motor4(devices::motor4);
 
-  Led red_led_left(devices::red_led_left);
-  Led green_led_left(devices::green_led_left);
-  Led green_led_right(devices::green_led_right);
-  Led red_led_right(devices::red_led_right);
-  Led blue_led_left(devices::blue_led_left);
+  rl::io_devices::Led red_led_left(devices::red_led_left);
+  rl::io_devices::Led green_led_left(devices::green_led_left);
+  rl::io_devices::Led green_led_right(devices::green_led_right);
+  rl::io_devices::Led red_led_right(devices::red_led_right);
+  rl::io_devices::Led blue_led_left(devices::blue_led_left);
 
-  BMI088 imu(devices::i2c);
+  rl::sensors::imu::BMI088 imu(devices::i2c);
   imu.acc.wakeup();
   imu.gyro.wakeup();
 
-  //   std::int16_t err{};
-
-  // UartDma uart_dma(uart6);
-  // uart_dma.enable_dma_receiving();
-
-  printf("Acc chip id: %d\n", imu.acc.chip_id());
-  printf("Gyro chip id: %d\n", imu.gyro.chip_id());
+  printf("Acc chip status: %d\n", imu.acc.check_device_exists());
+  printf("Gyro chip status: %d\n", imu.gyro.check_device_exists());
 
   for (;;) {
 
