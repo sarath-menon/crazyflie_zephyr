@@ -11,4 +11,6 @@ struct devices {
   // led's
   constexpr static struct gpio_dt_spec red_led_left =
       GPIO_DT_SPEC_GET(DT_ALIAS(led1), gpios);
+  constexpr static struct gpio_dt_spec blue_led =
+      GPIO_DT_SPEC_GET(DT_ALIAS(led5), gpios);
 };
