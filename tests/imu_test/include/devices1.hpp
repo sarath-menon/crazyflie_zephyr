@@ -6,6 +6,6 @@
 
 struct devices {
   // console
-  constexpr const static struct device *console =
+  struct device constexpr const static *const console =
       DEVICE_DT_GET(DT_CHOSEN(zephyr_console));
 };
